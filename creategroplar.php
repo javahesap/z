@@ -6,7 +6,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>CRUD Example</h1>
+    <h1>Grop Oluşturma</h1>
     <form id="crudForm">
       <div class="form-group">
         <label for="adi">Adı:</label>
