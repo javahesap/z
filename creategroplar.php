@@ -7,7 +7,7 @@
 <body>
   <div class="container">
     <h1>Grop Oluşturma</h1>
-    <form id="crudForm">
+    <form id="crudForm" action="update.php?id=25">
       <div class="form-group">
         <label for="adi">Adı:</label>
         <input type="text" class="form-control" id="adi" required>

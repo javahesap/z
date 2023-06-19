@@ -1,28 +1,30 @@
 <?php
-// Handle update operation
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  // Assuming you have a database connection established,
-  // you can use prepared statements to update the record in the "gruplar" table
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $id = $_GET['id']; // Assuming the ID is passed in the URL
+  $adi = $_POST['adi'];
+  $active = isset($_POST['active']) ? 1 : 0;
+  $acitivetum = isset($_POST['acitivetum']) ? 1 : 0;
 
-  // Example using PDO:
   include("masterdb.php");
+
   try {
-    $conn = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPass);
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $id = $_GET["id"];
-    $adi = $_POST["adi"];
-    $active = isset($_POST["active"]) ? 1 : 0;
-    $acitivetum = isset($_POST["acitivetum"]) ? 1 : 0;
+    $sql = "UPDATE `gruplar` SET `adi` = :adi, `active` = :active, `acitivetum` = :acitivetum WHERE `id` = :id";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':adi', $adi);
+    $stmt->bindParam(':active', $active);
+    $stmt->bindParam(':acitivetum', $acitivetum);
+    $stmt->bindParam(':id', $id);
 
-    $stmt = $conn->prepare("UPDATE gruplar SET adi = ?, active = ?, acitivetum = ? WHERE id = ?");
-    $stmt->execute([$adi, $active, $acitivetum, $id]);
+    $stmt->execute();
 
-    echo "Record updated successfully";
+    echo 'Data updated successfully';
   } catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
+    echo 'Error updating data: ' . $e->getMessage();
   }
-}
 
-echo "<script>alert('bele')</script>"
+  $conn = null;
+}
 ?>

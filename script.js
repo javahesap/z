@@ -11,7 +11,7 @@ $(document).ready(function() {
   
       if (adi.trim() !== "") {
         // Create a new record
-        createRecord(adi, active, acitivetum);
+       createRecord(adi, active, acitivetum);
       } else {
         alert("Please enter a valid Adı.");
       }
@@ -90,7 +90,6 @@ $(document).ready(function() {
   
 
   function editRecord(id) {
-    
     // Fetch the record details based on the given ID
     $.ajax({
       url: "fetch.php",
@@ -109,13 +108,15 @@ $(document).ready(function() {
    
           // Set the form action to update the record
           $("#crudForm").attr("action", "update.php?id=" + id);
+          alert("edit basıldı");
+
         } else {
           alert("Failed to fetch record details.");
         }
       },
       error: function(xhr, status, error) {
         console.log(xhr.responseText);
-       
+       e
       }
     });
   }
