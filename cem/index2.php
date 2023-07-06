@@ -26,13 +26,23 @@
         <label for="degre">Degre:</label>
 
         <select class="form-control" id="degre" name="degre" required>
-          <option value="1">1st Degree</option>
-          <option value="2">2nd Degree</option>
-          <option value="3">3rd Degree</option>
+        <?php
+require_once "db_connect.php";
+$sql = "SELECT * FROM gruplar";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+
+$result = "";
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+          <option value="<?php echo $row['id'] ?>"><?php echo $row['adi'] ?></option>
+
+        <?php
+        }  
+        ?>
         
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Update User</button>
+      <button type="submit" class="btn btn-primary">Güncelle </button>
     </form>
   </div>
 

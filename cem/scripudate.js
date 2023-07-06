@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   function updateUser(userId, adi, soyadi, imgpath, degre) {
     $.ajax({
-      url: "update.php",
+      url: "updateuser.php",
       method: "POST",
       data: {
         id: userId,
@@ -42,7 +42,7 @@ $(document).ready(function() {
       },
       success: function() {
         alert("User updated successfully!");
-        window.location.href = "index.html";
+        window.location.href = "kisiekle.php";
       }
     });
   }

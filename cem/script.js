@@ -5,11 +5,15 @@ $(document).ready(function() {
   // Add User form submission
   $("#addUserForm").submit(function(event) {
     event.preventDefault();
+   
     var adi = $("#adi").val();
     var soyadi = $("#soyadi").val();
     var imgpath = $("#imgpath").val();
     var degre = $("#degre").val();
-    addUser(adi, soyadi, imgpath, degre);
+    var tiktoklink = $("#tiktoklink").val();
+
+   
+    addUser(adi, soyadi, imgpath, degre,tiktoklink);
   });
 
   // Delete User button click
@@ -21,7 +25,7 @@ $(document).ready(function() {
   // Load Users
   function loadUsers() {
     $.ajax({
-      url: "read.php",
+      url: "readuser.php",
       method: "GET",
       success: function(data) {
         $("#userTable tbody").html(data);
@@ -30,11 +34,12 @@ $(document).ready(function() {
   }
 
   // Add User
-  function addUser(adi, soyadi, imgpath, degre) {
+  function addUser(adi, soyadi, imgpath, degre,tiktoklink) {
+
     $.ajax({
-      url: "create.php",
+      url: "createuser.php",
       method: "POST",
-      data: { adi: adi, soyadi: soyadi, imgpath: imgpath, degre: degre },
+      data: { adi: adi, soyadi: soyadi, imgpath: imgpath, degre: degre, tiktoklink: tiktoklink },
       success: function() {
         loadUsers();
         $("#addUserForm")[0].reset();
@@ -45,7 +50,7 @@ $(document).ready(function() {
   // Delete User
   function deleteUser(userId) {
     $.ajax({
-      url: "delete.php",
+      url: "deleteuser.php",
       method: "POST",
       data: { id: userId },
       success: function() {

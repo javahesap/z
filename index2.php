@@ -1,265 +1,52 @@
-<?php
- include("header.php"); 
-//include("sidebar_yan.php"); 
- ?>
-        <div class="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <!-- Column -->
-                    <div class="col-lg-3 col-xlg-3">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Güncelle</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Güncelle</h1>
 
-                        <!-- Column -->
-                        <div class="card">
-                            <div class="card-body bg-info">
-                                <h4 class="text-white card-title">Gurup 1</h4>
+    <form id="updateUserForm">
+      <input type="hidden" id="userId" name="userId">
+      <div class="form-group">
+        <label for="adi">Adi:</label>
+        <input type="text" class="form-control" id="adi" name="adi" required>
+      </div>
+      <div class="form-group">
+        <label for="soyadi">Soyadi:</label>
+        <input type="text" class="form-control" id="soyadi" name="soyadi" required>
+      </div>
+      <div class="form-group">
+        <label for="imgpath">Img Path:</label>
+        <input type="text" class="form-control" id="imgpath" name="imgpath" required>
+      </div>
+      <div class="form-group">
+        <label for="degre">Degre:</label>
 
-                            </div>
-                            <div class="card-body">
-                                <div class="message-box contact-box">
+        <select class="form-control" id="degre" name="degre" required>
+        <?php
+require_once "db_connect.php";
+$sql = "SELECT * FROM gruplar";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
 
-                                    <div class="message-widget contact-widget">
-                                        <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
-                                            <div class="user-img mb-0"> <img src="./assets/images/users/1.jpg"
-                                                    alt="user" class="img-circle"> <span
-                                                    class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5 class="mb-0">Pavan kumar</h5> <span
-                                                    class="mail-desc">info@wrappixel.com</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
-                                            <div class="user-img mb-0"> <img src="./assets/images/users/2.jpg"
-                                                    alt="user" class="img-circle"> <span
-                                                    class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5 class="mb-0">Sonu Nigam</h5> <span
-                                                    class="mail-desc">pamela1987@gmail.com</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
-                                            <div class="user-img mb-0"> <span class="round">A</span> <span
-                                                    class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5 class="mb-0">Arijit Sinh</h5> <span
-                                                    class="mail-desc">cruise1298.fiplip@gmail.com</span>
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="#" class="d-flex align-items-center">
-                                            <div class="user-img mb-0"> <img src="./assets/images/users/4.jpg"
-                                                    alt="user" class="img-circle"> <span
-                                                    class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5 class="mb-0">Pavan kumar</h5> <span
-                                                    class="mail-desc">kat@gmail.com</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+$result = "";
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { ?>
+          <option value="<?php echo $row['id'] ?>"><?php echo $row['adi'] ?></option>
 
-                        
-                    </div>
+        <?php
+        }  
+        ?>
+        
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Update User</button>
+    </form>
+  </div>
 
-
-
-
-
-                    <div class="col-lg-3 col-xlg-3">
-
-<!-- Column -->
-<div class="card">
-    <div class="card-body bg-info">
-        <h4 class="text-white card-title">Gurup 2</h4>
-
-    </div>
-    <div class="card-body">
-        <div class="message-box contact-box">
-
-            <div class="message-widget contact-widget">
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/1.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status online pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">info@wrappixel.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/2.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status busy pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Sonu Nigam</h5> <span
-                            class="mail-desc">pamela1987@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <span class="round">A</span> <span
-                            class="profile-status away pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Arijit Sinh</h5> <span
-                            class="mail-desc">cruise1298.fiplip@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/4.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status offline pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">kat@gmail.com</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="col-lg-3 col-xlg-3">
-
-<!-- Column -->
-<div class="card">
-    <div class="card-body bg-info">
-        <h4 class="text-white card-title">Gurup 3</h4>
-
-    </div>
-    <div class="card-body">
-        <div class="message-box contact-box">
-
-            <div class="message-widget contact-widget">
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/1.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status online pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">info@wrappixel.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/2.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status busy pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Sonu Nigam</h5> <span
-                            class="mail-desc">pamela1987@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <span class="round">A</span> <span
-                            class="profile-status away pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Arijit Sinh</h5> <span
-                            class="mail-desc">cruise1298.fiplip@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/4.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status offline pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">kat@gmail.com</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="col-lg-3 col-xlg-3">
-
-<!-- Column -->
-<div class="card">
-    <div class="card-body bg-info">
-        <h4 class="text-white card-title">Gurup 2</h4>
-
-    </div>
-    <div class="card-body">
-        <div class="message-box contact-box">
-
-            <div class="message-widget contact-widget">
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/1.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status online pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">info@wrappixel.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/2.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status busy pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Sonu Nigam</h5> <span
-                            class="mail-desc">pamela1987@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <span class="round">A</span> <span
-                            class="profile-status away pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Arijit Sinh</h5> <span
-                            class="mail-desc">cruise1298.fiplip@gmail.com</span>
-                    </div>
-                </a>
-                <!-- Message -->
-                <a href="#" class="d-flex align-items-center">
-                    <div class="user-img mb-0"> <img src="./assets/images/users/4.jpg"
-                            alt="user" class="img-circle"> <span
-                            class="profile-status offline pull-right"></span> </div>
-                    <div class="mail-contnet">
-                        <h5 class="mb-0">Pavan kumar</h5> <span
-                            class="mail-desc">kat@gmail.com</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</div>
-
-
-
-
-                </div>
-            </div>
-            <?php include("footer.php"); ?>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="scripudate.js"></script>
+</body>
+</html>
